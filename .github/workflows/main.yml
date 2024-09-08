@@ -1,0 +1,22 @@
+name: Run PowerShell Script Daily
+
+on:
+  schedule:
+    - cron: '35 17 * * *'  # Runs at 8:35 PM GMT+3 (which is 5:35 PM UTC) every day
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install PowerShell
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y powershell
+
+    - name: Run PowerShell Script
+      run: |
+        pwsh ./activity_check.ps1
