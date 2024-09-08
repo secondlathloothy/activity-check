@@ -2,7 +2,7 @@ name: Run PowerShell Script Daily
 
 on:
   schedule:
-    - cron: '43 17 * * *'  # Automatically runs at 8:43 PM GMT+3 (5:43 PM UTC) every day
+    - cron: '0 10 * * *'  # Runs at 1:00 PM GMT+3 (10:00 AM UTC) every day
   workflow_dispatch:        # Allows manual trigger of the workflow
 
 jobs:
@@ -13,9 +13,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       with:
-        # Allow pushing changes back to the repository
         persist-credentials: false
-        fetch-depth: 0              # Ensure we have the full history so we can push
+        fetch-depth: 0
 
     - name: Install PowerShell
       run: |
@@ -34,4 +33,4 @@ jobs:
         git commit -m "Increment day count"
         git push https://$GITHUB_TOKEN@github.com/${{ github.repository }}.git HEAD:main
       env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}  # Use the custom token name you set in the repository
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
