@@ -1,10 +1,10 @@
 # Define the file path to store the current day count (relative path in the root directory)
 $dayFile = "daycount.txt"
 
-# Check if the file exists, if not, create it with an initial value of 7
+# Check if the file exists, if not, create it with an initial value of 1
 if (-not (Test-Path $dayFile)) {
-    Write-Host "Day count file not found, initializing with day 7."
-    Set-Content -Path $dayFile -Value "7"
+    Write-Host "Day count file not found, initializing with day 1."
+    Set-Content -Path $dayFile -Value "1"
 }
 
 # Read the current day from the file and trim any extra spaces or newlines
@@ -13,8 +13,8 @@ $currentDay = (Get-Content -Path $dayFile).Trim()
 # Convert the current day to an integer
 $currentDay = [int]$currentDay
 
-# Define your Discord webhook URL
-$webhookUrl = "https://discord.com/api/webhooks/1282390179981689064/U_QuvqQdGWdCA29tlsvg2Q5pK2pZNvWh1dbPeLLkryxrOFJ8BDR79ojicbbDxytJBSJ2"
+# Define your new Discord webhook URL
+$webhookUrl = "https://discord.com/api/webhooks/1282385517505413130/TGq0D8bCLakjRfke0a2k6eYP7GubdQ4mp-7NdTHybf5GMCCoyMx2jfoR6eu1b8yLK7Wy"
 
 # Define the message content, using the current day value
 $message = "**# ACTIVITY CHECK**`n`nDay $currentDay`n`nGoal: 9 reacts`n`n@everyone"
