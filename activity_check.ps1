@@ -17,7 +17,7 @@ $currentDay = [int]$currentDay
 $webhookUrl = "https://discord.com/api/webhooks/1282385517505413130/TGq0D8bCLakjRfke0a2k6eYP7GubdQ4mp-7NdTHybf5GMCCoyMx2jfoR6eu1b8yLK7Wy"
 
 # Define the message content, using the current day value
-$message = "**# ACTIVITY CHECK**`n`nDay $currentDay`n`nGoal: 9 reacts`n`n@everyone"
+$message = "**# ACTIVITY CHECK**`n`nDay $currentDay`n`nGoal: 9 reacts`n`n"
 
 # Log the current day and the message for debugging purposes
 Write-Host "Current Day: $currentDay"
