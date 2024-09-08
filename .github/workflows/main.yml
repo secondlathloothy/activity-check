@@ -2,7 +2,8 @@ name: Run PowerShell Script Daily
 
 on:
   schedule:
-    - cron: '35 17 * * *'  # Runs at 8:35 PM GMT+3 (which is 5:35 PM UTC) every day
+    - cron: '43 17 * * *'  # Runs at 8:43 PM GMT+3 (which is 5:43 PM UTC) every day
+  workflow_dispatch:        # Allows manual triggering of the workflow
 
 jobs:
   run-script:
