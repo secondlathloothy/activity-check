@@ -1,8 +1,9 @@
-# Define the file to store the current day count
-$dayFile = "C:\users\layth\Desktop\daycount.txt"
+# Define the file path to store the current day count (relative path in the root directory)
+$dayFile = "daycount.txt"
 
 # Check if the file exists, if not, create it with an initial value of 7
 if (-not (Test-Path $dayFile)) {
+    Write-Host "Day count file not found, initializing with day 7."
     Set-Content -Path $dayFile -Value "7"
 }
 
@@ -35,3 +36,6 @@ $newDay = $currentDay + 1
 
 # Update the day count in the file
 Set-Content -Path $dayFile -Value $newDay
+
+# Log the new day for verification
+Write-Host "New Day: $newDay"
