@@ -13,10 +13,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       with:
-        # Checkout the repository and allow pushing changes back
-        persist-credentials: false  # Prevents using the runner’s credentials
+        # Allow pushing changes back to the repository
+        persist-credentials: false
         fetch-depth: 0              # Ensure we have the full history so we can push
-        ref: main                   # Ensure you're working on the main branch
 
     - name: Install PowerShell
       run: |
@@ -27,13 +26,12 @@ jobs:
       run: |
         pwsh ./activity_check.ps1
 
-    - name: Commit Day Count Update
+    - name: Commit and Push Changes
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
         git add daycount.txt
         git commit -m "Increment day count"
-        git push
+        git push https://$GITHUB_TOKEN@github.com/${{ github.repository }}.git HEAD:main
       env:
-        # Personal access token (PAT) for pushing to the repo
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}  # Use the custom token name you set in the repository
