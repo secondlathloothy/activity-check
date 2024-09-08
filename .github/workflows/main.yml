@@ -2,8 +2,8 @@ name: Run PowerShell Script Daily
 
 on:
   schedule:
-    - cron: '43 17 * * *'  # Runs at 8:43 PM GMT+3 (which is 5:43 PM UTC) every day
-  workflow_dispatch:        # Allows manual triggering of the workflow
+    - cron: '47 17 * * *'  # Automatically runs at 8:43 PM GMT+3 (5:43 PM UTC) every day
+  workflow_dispatch:        # Allows manual trigger of the workflow
 
 jobs:
   run-script:
@@ -21,3 +21,11 @@ jobs:
     - name: Run PowerShell Script
       run: |
         pwsh ./activity_check.ps1
+
+    - name: Commit Day Count Update
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git add C:\users\layth\Desktop\daycount.txt
+        git commit -m "Increment day count"
+        git push
